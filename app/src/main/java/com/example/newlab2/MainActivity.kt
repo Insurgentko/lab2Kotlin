@@ -78,7 +78,9 @@ fun ImageSlider(imagesWithText: List<Pair<Painter, String>>) {
                 .size(width = 250.dp, height = 250.dp)
         )
 
-       Column (modifier = Modifier.background(color = Color.Gray)) {
+       Column (modifier = Modifier.fillMaxWidth().background(color = Color.Gray),
+           verticalArrangement = Arrangement.Center,
+           horizontalAlignment = Alignment.CenterHorizontally) {
            Text(
                text = imagesWithText[currentIndex].second,
                modifier = Modifier.padding(vertical = 8.dp)
@@ -89,17 +91,17 @@ fun ImageSlider(imagesWithText: List<Pair<Painter, String>>) {
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.Bottom
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Button(onClick = {
-                currentIndex = (currentIndex - 1 + imagesWithText.size) % imagesWithText.size
-            }) {
+                currentIndex = (currentIndex - 1 + imagesWithText.size) % imagesWithText.size},
+                modifier = Modifier.size(width = 120.dp, height = 45.dp)
+            ) {
                 Text("Previous")
             }
             Button(onClick = {
                 currentIndex = (currentIndex + 1) % imagesWithText.size},
-                modifier = Modifier.size(width = 100.dp, height = 50.dp),
+                modifier = Modifier.size(width = 120.dp, height = 45.dp)
             ) {
                 Text("Next")
             }
